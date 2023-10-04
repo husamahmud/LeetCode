@@ -5,9 +5,10 @@ class Solution(object):
         nums.sort()
 
         for i in range(n - 2):
+            # skip the duplicates values
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
-
+            # two pointers technique
             l = i + 1
             r = n - 1
             while l < r:
@@ -20,6 +21,7 @@ class Solution(object):
                     res.append([nums[l], nums[i], nums[r]])
                     l += 1
                     r -= 1
+                    # check if current nums[l] is equal to the prev element nums[l-1]
                     while l < r and nums[l] == nums[l - 1]:
                         l += 1
 
