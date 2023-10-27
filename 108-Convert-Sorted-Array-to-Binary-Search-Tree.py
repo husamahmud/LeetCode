@@ -13,7 +13,6 @@ class Solution(object):
         n = len(nums)
         mid = n // 2
 
-        # make the middle element the root
         root = TreeNode(nums[mid])
 
         # left subtree of the root has values < arr[mid]
@@ -22,16 +21,3 @@ class Solution(object):
         root.right = self.sortedArrayToBST(nums[mid + 1:])
 
         return root
-
-
-def preOrder(node):
-    if not node:
-        return
-    print(node.data)
-    preOrder(node.left)
-    preOrder(node.right)
-
-
-if __name__ == '__main__':
-    arr = [1, 2, 3, 4, 5, 6, 7]
-    root =
