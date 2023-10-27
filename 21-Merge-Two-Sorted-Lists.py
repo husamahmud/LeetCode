@@ -6,8 +6,6 @@ class ListNode(object):
 
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
-        # use the dummy node as a placeholder to ensure that curr always
-        # points to a valid node, even if list1 or list2 becomes empty
         dummy = ListNode()
         curr = dummy
 
