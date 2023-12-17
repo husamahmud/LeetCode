@@ -11,9 +11,7 @@ function ListNode(val, next) {
  * @return {ListNode}
  */
 var reverseList = function (head) {
-    let curr = head,¥
-        next = null,
-        prev = null;
+    let curr = head, next = null, prev = null;
 
     while (curr !== null) {
         next = curr.next;
