@@ -15,3 +15,14 @@ class Solution(object):
             curr = next_node
         head = prev
         return head
+
+    def reverseList(self, head):
+        if head is None or head.next is None:
+            return head
+
+        revTail = head.next
+        newHead = self.reverseList(head.next)
+        revTail.next = head
+        head.next = None
+
+        return newHead
