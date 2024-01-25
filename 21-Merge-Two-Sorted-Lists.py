@@ -5,6 +5,25 @@ class ListNode(object):
 
 
 class Solution(object):
+    def merge(self, list1, list2):
+        if list1 is None:
+            return list2
+        if list2 is None:
+            return list1
+
+        if list1.val < list2.val:
+            list1.next = self.merge(list1.next, list2)
+            return list1
+        else:
+            list2.next = self.merge(list2.next, list1)
+            return list2
+
+    def mergeTwoLists(self, list1, list2):
+        newHead = self.merge(list1, list2)
+        return newHead
+
+
+class Solution(object):
     def mergeTwoLists(self, list1, list2):
         dummy = ListNode()
         curr = dummy
