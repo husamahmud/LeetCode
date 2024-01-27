@@ -15,9 +15,8 @@ class Solution(object):
 
         root = TreeNode(nums[mid])
 
-        # left subtree of the root has values < arr[mid]
         root.left = self.sortedArrayToBST(nums[:mid])
-        # rightF subtree of the root has values > arr[mid]
         root.right = self.sortedArrayToBST(nums[mid + 1:])
 
         return root
+
