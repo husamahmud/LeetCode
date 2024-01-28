@@ -1,5 +1,6 @@
 class Solution(object):
     def twoSum(self, nums, target):
+        x = 1
         hash_nums = {}
 
         for i, num in enumerate(nums):
