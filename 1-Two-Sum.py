@@ -1,8 +1,12 @@
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        map = {}
+class Solution(object):
+    def twoSum(self, nums, target):
+        hash_nums = {}
+
         for i, num in enumerate(nums):
-            complement = target - num
-            if complement in map:
-                return [map[complement], i]
-            map[num] = i
+            diff = target - num
+            if diff in hash_nums:
+                return i, hash_nums[diff]
+            else:
+                hash_nums[num] = i
+            
+        return -1
