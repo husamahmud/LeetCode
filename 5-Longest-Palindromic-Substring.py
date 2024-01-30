@@ -1,4 +1,5 @@
 class Solution(object):
+    # test
     def longestPalindrome(self, s):
         res = \\
         for i in xrange(len(s)):
@@ -12,8 +13,6 @@ class Solution(object):
                 res = tmp
         return res
     
-    # get the longest palindrome, l, r are the middle indexes   
-    # from inner to outer
     def helper(self, s, l, r):
         while l >= 0 and r < len(s) and s[l] == s[r]:
             l -= 1; r += 1
