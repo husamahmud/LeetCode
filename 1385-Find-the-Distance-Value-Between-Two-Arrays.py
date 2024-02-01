@@ -1,7 +1,6 @@
 class Solution(object):
     def findTheDistanceValue(self, arr1, arr2, d):
         count = 0
-
         for num1 in arr1:
             close = False
             for num2 in arr2:
@@ -11,5 +10,4 @@ class Solution(object):
                     break
             if not close:
                 count += 1
-
         return count
