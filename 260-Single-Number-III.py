@@ -1,13 +1,12 @@
 class Solution(object):
     def singleNumber(self, nums):
-        freq = {}
+        uniq = set()
+
         for num in nums:
-            freq[num] = freq.get(num, 0) + 1
+            if num in uniq:
+                uniq.remove(num)
+            else:
+                uniq.add(num)
 
-        res = []
-        for num, count in freq.items():
-            if count == 1:
-                res . append(num)
-
-        return res 
+        return uniq
         
