@@ -1,12 +1,13 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        hash_nums = {}
+        hash = {}
+        n = len(nums)
 
-        for i, num in enumerate(nums):
-            diff = target - num
-            if diff in hash_nums:
-                return i, hash_nums[diff]
+        for i in range(n):
+            diff = target - nums[i]
+            if diff in hash:
+                return hash[diff], i
             else:
-                hash_nums[num] = i
-            
+                hash[nums[i]] = i
+
         return -1
