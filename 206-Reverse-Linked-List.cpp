@@ -1,5 +1,3 @@
-
-
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
@@ -7,13 +5,19 @@ public:
         ListNode* curr = head;
         ListNode* next;
 
-        while (curr != nullptr) {
-            next = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = next;
-        }
-
-        return prev;
+        return reverse(curr, next, prev);
     }
+
+private:
+    ListNode* reverse(ListNode* curr, ListNode* next, ListNode* prev) {
+        if (curr == nullptr)
+            return prev;
+
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+
+        return reverse(curr, next, prev);
+    };
 };
