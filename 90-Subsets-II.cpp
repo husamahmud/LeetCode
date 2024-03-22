@@ -2,25 +2,25 @@ class Solution {
 public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         vector<vector<int>> res;
-        vector<int> curr;
+        vector<int> subset;
 
         sort(nums.begin(), nums.end());
-        backtrack(nums, res, curr, 0);
+        backtrack(nums, res, subset, 0);
 
         return res;
     }
 
 private:
-    void backtrack(vector<int>& nums, vector<vector<int>>& res, vector<int>& curr, int idx) {
-        res.push_back(curr);
+    void backtrack(vector<int>& nums, vector<vector<int>>& res, vector<int>& subset, int idx) {
+        res.push_back(subset);
 
         for (int i = idx; i < nums.size(); i++) {
             if (i > idx && nums[i] == nums[i - 1])
                 continue;
 
-            curr.push_back(nums[i]);
-            backtrack(nums, res, curr, i + 1);
-            curr.pop_back();
+            subset.push_back(nums[i]);
+            backtrack(nums, res, subset, i + 1);
+            subset.pop_back();
         }
     }
 };
