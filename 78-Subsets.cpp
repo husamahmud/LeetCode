@@ -4,21 +4,20 @@ public:
         vector<vector<int>> res;
         vector<int> subset;
 
-        dfs(nums, res, subset, 0);
-
+        bt(nums, res, subset, 0);
         return res;
     }
 
 private:
-    void dfs(vector<int>& nums, vector<vector<int>>& res, vector<int>& subset, int i) {
-        if (i == nums.size()) {
+    void bt(vector<int> nums, vector<vector<int>>& res, vector<int>& subset, int i) {
+        if (nums.size() == i) {
             res.push_back(subset);
             return;
         }
 
         subset.push_back(nums[i]);
-        dfs(nums, res, subset, i + 1);
+        bt(nums, res, subset, i + 1);
         subset.pop_back();
-        dfs(nums, res, subset, i + 1);
+        bt(nums, res, subset, i + 1);
     }
 };
