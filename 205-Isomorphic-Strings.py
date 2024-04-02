@@ -1,18 +1,12 @@
-class Solution(object):
-    def isIsomorphic(self, s, t):
-        if len(s) != len(t):
-            return False
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        mapST, mapTS = {}, {}
 
-        hash_s = {}
-        n = len(s)
-        for i in range(n):
-            char_s = s[i]
-            char_t = t[i]
-
-            if char_s in hash_s and hash_s[char_s] != char_t:
+        for c1, c2 in zip(s, t):
+            if (c1 in mapST and mapST[c1] != c2) or (c2 in mapTS and mapTS[c2] != c1):
                 return False
-            elif char_s not in hash_s and char_t in hash_s.values():
-                return False
-            hash_s[char_s] = char_t
+            
+            mapST[c1] = c2
+            mapTS[c2] = c1
 
         return True
