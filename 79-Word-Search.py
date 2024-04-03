@@ -18,6 +18,7 @@ class Solution:
                    dfs(r, c + 1, idx + 1) or
                    dfs(r, c - 1, idx + 1))
             visited.remove((r, c))
+            
             return res
 
         for r in range(rows):
