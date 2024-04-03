@@ -11,6 +11,6 @@ public:
             map[nums[i]] = i;
         }
 
-        return {1};
+        return {-1};
     }
 };
