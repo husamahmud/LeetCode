@@ -1,9 +1,9 @@
 class Solution(object):
     def deckRevealedIncreasing(self, deck):
         n = len(deck)
-        res = [0] * n
         q = deque(range(n))
-        deck.sort()        
+        res = [0] * n
+        deck.sort()
 
         for card in deck:
             i = q.popleft()
