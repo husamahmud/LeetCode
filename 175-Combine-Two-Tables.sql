@@ -1,4 +1,3 @@
--- Write your PostgreSQL query statement below
-select firstName as "firstName",lastname "lastName",city,state 
-from person left join address
-on person.personid=address.personid
+SELECT P.firstName, P.lastName, A.city, A.state
+FROM Person P LEFT JOIN Address A
+on P.personId = A.personId
