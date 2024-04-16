@@ -20,12 +20,12 @@ class Solution:
             curDepth -= 1
 
             if curDepth == 1:
-                new_left = TreeNode(val)
-                new_right = TreeNode(val)
-                new_left.left = node.left
-                new_right.right = node.right
-                node.left = new_left
-                node.right = new_right
+                newLeft = TreeNode(val)
+                newRight = TreeNode(val)
+                newLeft.left = node.left
+                newRight.right = node.right
+                node.left = newLeft
+                node.right = newRight
             else:
                 addNodes(node.left, curDepth)
                 addNodes(node.right, curDepth)
