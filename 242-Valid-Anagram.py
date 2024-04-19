@@ -1,18 +1,13 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        map = {}
-
-        for c in s:
-            map[c] = map.get(c, 0) + 1
+        if len(s) != len(t):
+            return False
+        
+        counter = Counter(s)
 
         for c in t:
-            if c in map:
-                map[c] -= 1
-            else:
+            if c not in counter or counter[c] == 0:
                 return False
+            counter[c] -= 1
 
-        for num in map.values():
-            if num != 0:
-                return False
-        
         return True
