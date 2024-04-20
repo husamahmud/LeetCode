@@ -5,7 +5,6 @@ class Solution:
         for email in emails: 
             splitted = email.split('@')
             local = splitted[0].split('+')[0].replace('.','')
-            # domain = splitted[1].split('+')[0]
             domain = splitted[1]
             emailsSet.add((local, domain))
 
