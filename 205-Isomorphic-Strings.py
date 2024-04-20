@@ -1,12 +1,19 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        mapST, mapTS = {}, {}
+        n = len(s)
+        freq = {}
+        hashST = {}
+        hashTS = {}
 
-        for c1, c2 in zip(s, t):
-            if (c1 in mapST and mapST[c1] != c2) or (c2 in mapTS and mapTS[c2] != c1):
+        for i in range(n):
+            freq[s[i]] = freq.get(s[i], 0) + 1
+            hashST[s[i]] = t[i]
+            hashTS[t[i]] = s[i]
+
+        for i in range(n):
+            if t[i] != hashST[s[i]] or s[i] != hashTS[t[i]] or freq[s[i]] == 0:
                 return False
-            
-            mapST[c1] = c2
-            mapTS[c2] = c1
-
+            else:
+                freq[s[i]] -= 1
+        
         return True
