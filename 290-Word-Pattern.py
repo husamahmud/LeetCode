@@ -1,25 +1,22 @@
-class Solution(object):
-    def wordPattern(self, pattern, s):
-        s_list = s.split(' ')
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        pattern, s = list(pattern), s.split(' ')
 
-        if len(pattern) != len(s_list):
+        if len(pattern) != len(s):
             return False
 
-        pattern_d = {}
-        word_d = {}
+        hashPS, hashSP = {}, {}
 
-        for i in range(len(pattern)):
-            char = pattern[i]
-            word = s_list[i]
-
-            if char not in pattern_d:
-                pattern_d[char] = word
-            elif pattern_d[char] != word:
+        for i in range(len(s)):
+            if pattern[i] in hashPS and hashPS[pattern[i]] != s[i]:
                 return False
+            hashPS[pattern[i]] = s[i]
 
-            if word not in word_d:
-                word_d[word] = char
-            elif word_d[word] != char:
+            if s[i] in hashSP and hashSP[s[i]] != pattern[i]:
                 return False
+            hashSP[s[i]] = pattern[i]
 
         return True
+        
+
+
