@@ -1,15 +1,13 @@
 class MyHashSet:
     def __init__(self):
-        self.set = set()        
+        self.mySet = set()        
 
     def add(self, key: int) -> None:
-        self.set.add(key)
+        self.mySet.add(key)
 
     def remove(self, key: int) -> None:
-        if self.contains(key):
-            self.set.remove(key)
+        if key in self.mySet:
+            self.mySet.remove(key)
 
     def contains(self, key: int) -> bool:
-        if key in self.set:
-            return True
-        return False
+        return key in self.mySet
