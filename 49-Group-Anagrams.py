@@ -1,16 +1,16 @@
-class Solution(object):
-	def groupAnagrams(self, strs):
-		hash_strs = {}
-		res = []
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        map = {}
+        res = []
 
-		for str in strs:
-			sorted_str = tuple(sorted(str))
-			if sorted_str in hash_strs:
-				hash_strs[sorted_str] += [str]
-			else:
-				hash_strs[sorted_str] = [str]
+        for str in strs:
+            sortedStr = tuple(sorted(str))
+            if sortedStr in map:
+                map[sortedStr].append(str)
+            else:
+                map[sortedStr] =[str]
 
-		for str in hash_strs.values():
-			res.append(str)
+        for entry in map:
+            res.append(map[entry])
 
-		return res
+        return res
