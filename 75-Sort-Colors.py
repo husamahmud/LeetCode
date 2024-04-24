@@ -9,3 +9,4 @@ class Solution(object):
                     nums[j], nums[j + 1] = nums[j + 1], nums[j]
             if not swapped:
                 break
+                
