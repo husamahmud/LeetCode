@@ -1,30 +1,19 @@
-class Solution(object):
-	def longestConsecutive(self, nums):
-		nums_set = set(nums)
-		res = 0
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if len(nums) == 1 or len(set(nums)) == 1:
+            return 1
 
-		for num in nums_set:
-			if num - 1 not in nums_set:
-				curr = num
-				count = 1
-				while curr + 1 in nums_set:
-					curr += 1
-					count += 1
-				res = max(res, count)
+        curMax = 1
+        maxSeq = 0
+        nums.sort()
 
-		return res
+        for i in range(1, len(nums)):
+            if nums[i - 1] + 1 == nums[i]:
+                curMax += 1
+            elif nums[i - 1] == nums[i]:
+                continue
+            else:
+                curMax = 1
+            maxSeq = max(curMax, maxSeq)
 
-	def longestConsecutive(self, nums):
-		uniq = sorted(set(nums))
-		n = len(uniq)
-		count = 0
-		res = 0
-
-		for i in range(n):
-			if i > 0 and uniq[i] == uniq[i - 1] + 1:
-				count += 1
-			else:
-				count = 1
-			res = max(res, count)
-
-		return res
+        return maxSeq
