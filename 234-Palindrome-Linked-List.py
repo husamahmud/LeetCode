@@ -1,42 +1,28 @@
-class ListNode(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        prev, cur = None, head
 
+        while cur:
+            next = cur.next
+            cur.next = prev
+            prev = cur
+            cur = next
 
-class Solution(object):
-    def rev(self, head):
-        curr = head
-        prev_node = None
-        while curr is not None:
-            next_node = curr.next
-            curr.next = prev_node
-            prev_node = curr
-            curr = next_node
-        head = prev_node
-        return head
+        return prev
 
-    def isPalindrome(self, head):
-        # empty list or a single-node list is a palindrome
-        if not head or not head.next:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        if not head:
             return True
 
-        # find the middle node of the linked list
-        slow = head
-        fast = head
-        while fast.next and fast.next.next:
-            slow = slow.next
-            fast = fast.next.next
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
 
-        # reverse the second half of the linked list
-        second_half = self.rev(slow.next)
+        next_half, cur = self.reverseList(slow.next), head
 
-        # compare the first half and the reversed second half
-        first_half = head
-        while second_half:
-            if first_half.val != second_half.val:
+        while next_half:
+            if cur.val != next_half.val:
                 return False
-            first_half = first_half.next
-            second_half = second_half.next
+            cur, next_half = cur.next, next_half.next
 
         return True
