@@ -1,19 +1,28 @@
-class ListNode(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+class Solution:
+    def removeContiguous(self, head: ListNode) -> ListNode:
+        curr, next = head, head.next
+        
+        while next and curr.val == next.val:
+            next = next.next
+        
+        curr.next = next
+        return curr
 
-
-class Solution(object):
-    def deleteDuplicates(self, head):
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
             return head
-        curr = head
-
-        while curr.next:
-            if curr.val == curr.next.val:
-                curr.next = curr.next.next
+        
+        if head.val == head.next.val:
+            new_head = self.removeContiguous(head)
+            head = new_head
+        
+        curr, next = head, head.next
+        while next:
+            if next.val == curr.val:
+                curr = self.removeContiguous(curr)
+                next = curr.next
             else:
-                curr = curr.next
-                
+                next, curr = next.next, curr.next
+        
         return head
+        
