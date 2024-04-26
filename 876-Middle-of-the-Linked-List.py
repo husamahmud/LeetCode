@@ -1,30 +1,14 @@
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        curr, count = head, 0
+        while curr:
+            curr = curr.next
+            count += 1
 
-
-class Solution(object):
-    def middleNode(self, head):
-        slow = head
-        fast = head
-
+        slow, fast = head, head.next
         while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+            slow, fast = slow.next, fast.next.next
 
+        if count % 2 == 0:
+            return slow.next
         return slow
-
-    def middleNode(self, head):
-        n = 0
-
-        curr = head
-        while curr is not None:
-            n += 1
-            curr = curr.next
-
-        curr = head
-        for _ in range(n // 2):
-            curr = curr.next
-
-        return curr
