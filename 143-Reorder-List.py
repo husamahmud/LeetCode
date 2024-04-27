@@ -1,35 +1,25 @@
-class ListNode(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+class Solution:
+    def rearrangeList(self, arr: List) -> List:
+        res = []
+        l, r = 0, len(arr) - 1
 
+        while l <= r:
+            res.append(arr[l])
+            if l != r:
+                res.append(arr[r])
+            l += 1
+            r -= 1
 
-class Solution(object):
-    def reorderList(self, head):
-        # finding the middle node
-        slow = head
-        fast = head.next
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+        return res
 
-        # reversing the second half
-        second = slow.next
-        slow.next = None
-        prev = None
-        while second:
-            temp = second.next
-            second.next = prev
-            prev = second
-            second = temp
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        nodes, curr = [], head
 
-        # merging the two halves
-        first = head
-        second = prev
-        while second:
-            temp1 = first.next
-            temp2 = second.next
-            first.next = second
-            second.next = temp1
-            first = temp1
-            second = temp2
+        while curr:
+            nodes.append(curr.val)
+            curr = curr.next
+
+        nodes = self.rearrangeList(nodes)
+        for node in nodes:
+            head.val = node
+            head = head.next
