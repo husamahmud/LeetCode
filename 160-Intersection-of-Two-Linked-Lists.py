@@ -1,35 +1,29 @@
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-class Solution(object):
-    def getIntersectionNode(self, headA, headB):
-        if not headA or not headB:
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if not headA and not headB:
             return None
 
-        lenA, lenB = 0, 0
-        nodeA, nodeB = headA, headB
+        lenA = lenB = 0
+        a, b = headA, headB
 
-        while nodeA is not None:
-            nodeA = nodeA.next
+        while a:
+            a = a.next
             lenA += 1
-        while nodeB is not None:
-            nodeB = nodeB.next
+
+        while b:
+            b = b.next
             lenB += 1
 
-        nodeA, nodeB = headA, headB
-        for _ in range(lenA - lenB):
-            nodeA = nodeA.next
-        for _ in range(lenB - lenA):
-            nodeB = nodeB.next
+        if lenA < lenB:
+            for i in range(lenB - lenA):
+                headB = headB.next
+        else:
+            for i in range(lenA - lenB):
+                headA = headA.next
 
-        while nodeA and nodeB:
-            if nodeA == nodeB:
-                return nodeA
-            else:
-                nodeA = nodeA.next
-                nodeB = nodeB.next
+        while headA and headB:
+            if headA == headB:
+                return headA
+            headA, headB = headA.next, headB.next
 
         return None
