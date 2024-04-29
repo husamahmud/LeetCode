@@ -1,10 +1,12 @@
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-class Solution(object):
+class Solution:
     def deleteNode(self, node):
-        node.val = node.next.val
-        node.next = node.next.next
+        deleted, curr = node, node
+
+        while deleted.next:
+            deleted.val, deleted.next.val = deleted.next.val, deleted.val
+            deleted = deleted.next
+
+        while curr.next != deleted:
+            curr = curr.next
+
+        curr.next = None
