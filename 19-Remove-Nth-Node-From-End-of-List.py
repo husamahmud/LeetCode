@@ -1,22 +1,13 @@
-class ListNode(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
-class Solution(object):
-    def removeNthFromEnd(self, head, n):
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         dummy = ListNode(0, head)
-        slow = dummy
-        fast = dummy.next
+        curr = dummy
 
         for _ in range(n):
-            fast = fast.next
+            head = head.next
 
-        while fast is not None:
-            slow = slow.next
-            fast = fast.next
+        while head:
+            head, curr = head.next, curr.next
 
-        slow.next = slow.next.next
-
+        curr.next = curr.next.next
         return dummy.next
