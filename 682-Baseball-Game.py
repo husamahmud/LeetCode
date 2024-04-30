@@ -1,15 +1,15 @@
-class Solution(object):
-    def calPoints(self, operations):
-        stk = []
+class Solution:
+    def calPoints(self, operations: List[str]) -> int:
+        stack = []
 
-        for x in operations:
-            if x.isdigit() or (x[0] == '-' and x[1:].isdigit()):
-                stk.append(int(x))
-            elif x == '+':
-                stk.append(stk[-1] + stk[-2])
-            elif x == 'C':
-                stk.pop()
-            elif x == 'D':
-                stk.append(stk[-1] * 2)
+        for op in operations:
+            if op == "+":
+                stack.append((stack[-1]) + stack[-2])
+            elif op == 'D':
+                stack.append(stack[-1] * 2)
+            elif op == 'C':
+                stack.pop()
+            else:
+                stack.append(int(op))
 
-        return sum(stk)
+        return sum(stack)
