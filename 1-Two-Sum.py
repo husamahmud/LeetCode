@@ -8,3 +8,5 @@ class Solution:
             if dif in map:
                 return [nums.index(dif), i]
             map[nums[i]] = dif
+
+        return [-1]
