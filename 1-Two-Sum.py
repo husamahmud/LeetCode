@@ -9,5 +9,4 @@ class Solution:
                 return [nums.index(dif), i]
             map[nums[i]] = dif
         
-        # testing
         return {-1}
