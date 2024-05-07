@@ -23,6 +23,4 @@ class Solution:
         if not stack:
             stack.append('/')
 
-        print(stack)
-
         return \\.join(stack)
