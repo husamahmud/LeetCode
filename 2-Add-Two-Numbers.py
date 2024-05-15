@@ -3,7 +3,7 @@ class Solution(object):
         dummy = ListNode()
         curr = dummy 
         carry = 0
-
+        # Testing            
         while l1 or l2 or carry:
             num1 = l1.val if l1 else 0
             num2 = l2.val if l2 else 0
