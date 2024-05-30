@@ -3,8 +3,6 @@ class Solution:
         n = len(nums)
         map = {}
 
-        # we are live
-
         for i in range(n):
             dif = target - nums[i]
             if dif in map:
