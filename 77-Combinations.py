@@ -2,15 +2,15 @@ class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         res = []
 
-        def generate(start: int, comb: List[int]) -> None:
+        def generate(comb: List[int], idx: int) -> None:
             if len(comb) == k:
-                res.append(comb.copy())
+                res.append(comb[:])
                 return
 
-            for i in range(start, n + 1):
+            for i in range(idx, n + 1):
                 comb.append(i)
-                generate(i + 1, comb)
+                generate(comb, i + 1)
                 comb.pop()
 
-        generate(1, [])
+        generate([], 1)
         return res
