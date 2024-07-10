@@ -3,16 +3,22 @@
  * @param {string} t
  * @return {boolean}
  */
-var isAnagram = function(s, t) {
-  if (s.length !== t.length) return false;
+var isAnagram = function (s, t) {
+    const freq = {}
 
-  const freq = {};
-  for (let c of s) freq[c] = (freq[c] || 0) + 1;
+    for (const c of s) {
+        if (freq[c]) freq[c]++
+        else freq[c] = 1
+    }
 
-  for (let c of t) {
-    if (!freq[c]) return false;
-    freq[c]--;
-  }
+    for (const c of t) {
+        if (!freq[c]) return false
+        else freq[c]--
+    }
 
-  return true;
+    for (const key in freq) {
+        if (freq[key] !== 0) return false
+    }
+
+    return true
 };
