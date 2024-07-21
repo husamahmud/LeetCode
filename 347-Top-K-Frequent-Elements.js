@@ -4,16 +4,17 @@
  * @return {number[]}
  */
 var topKFrequent = function (nums, k) {
-    let freq = new Map()
-    for (let num of nums)
-        freq.set(num, (freq.get(num) || 0) + 1)
+  const freq = {}
+  const sorted = []
+  const result = []
 
-    let freqEntries = Array.from(freq.entries())
-    freqEntries.sort((a, b) => b[1] - a[1])
+  nums.forEach(num => freq[num] = (freq[num] || 0) + 1)
 
-    let res = []
-    for (let i = 0; i < k; i++)
-        res.push(freqEntries[i][0])
+  for (const entry in freq) {
+    sorted.push([entry, freq[entry]])
+  }
 
-    return res
+  sorted.sort((a, b) => b[1] - a[1])
+
+  return sorted.slice(0, k).map(entry => entry[0])
 };
