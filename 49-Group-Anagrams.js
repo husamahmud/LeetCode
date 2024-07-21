@@ -1,18 +1,24 @@
-/**
- * @param {string[]} strs
- * @return {string[][]}
- */
+const sortStr = (str) => {
+  return str.split('').sort().join('')
+}
+
 var groupAnagrams = function (strs) {
-    const anagram = new Map()
+  const map = {}
+  const result = []
 
-    for (let str of strs) {
-        let sorted = str.split('').sort().join('')
+  for (const str of strs) {
+    let sortedStr = sortStr(str)
 
-        if (anagram.has(sorted))
-            anagram.get(sorted).push(str)
-        else
-            anagram.set(sorted, [str])
+    if (map[sortedStr]) {
+      map[sortedStr].push(str)
+    } else {
+      map[sortedStr] = [str]
     }
+  }
 
-    return Array.from(anagram.values())
+  for (const [key, val] of Object.entries(map)) {
+    result.push(val)
+  }
+
+  return result
 };
