@@ -21,11 +21,3 @@ function reorderList(head: ListNode | null): void {
     curr = curr.next
   }
 };
-
-/* 
-  1 2 3 4
-  slow -> 2
-
-  1 2 3 4 5
-  slow -> 3
-*/
