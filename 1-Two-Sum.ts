@@ -1,18 +1,12 @@
-public class Solution {
-    public int[] TwoSum(int[] nums, int target) {
-        Dictionary<int, int> map = new Dictionary<int, int>();
-        int[] result = new int[2];
+function twoSum(nums: number[], target: number): number[] {
+  const m = {}
 
-        for (int i = 0; i < nums.Length; i++) {
-            int complement = target - nums[i];
-            if (map.ContainsKey(complement)) {
-                result[0] = map[complement];
-                result[1] = i;
-                break;
-            }
-            map[nums[i]] = i;
-        }
+  for (let i = 0; i < nums.length; i++) {
+    const diff = target - nums[i]
 
-        return result;
-    }
-}
+    if (diff in m) return [i, m[diff]]
+    m[nums[i]] = i
+  }
+
+  return [-1]
+};
