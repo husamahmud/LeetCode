@@ -1,16 +1,18 @@
 function isAnagram(s: string, t: string): boolean {
-  const map = {}
+  const freq: Record<string, number> = {}
 
   for (const c of s) {
-    if (map[c]) map[c]++
-    else map[c] = 1
+    freq[c] = (freq[c] || 0) + 1
   }
 
   for (const c of t) {
-    if (map[c]) map[c]--
-    else return false
+    if (!freq[c]) return false
+    freq[c]--
   }
 
-  for (const key in map) if (map[key]) return false
+  for (const val of Object.values(freq)) {
+    if (val !== 0) return false;
+  }
+
   return true
 };
