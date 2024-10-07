@@ -1,5 +1,4 @@
 function longestCommonPrefix(strs: string[]): string {
-  if (!strs) return ''
   let res = "";
 
   strs.sort((a: string, b: string) => a.length - b.length)
