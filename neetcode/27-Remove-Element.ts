@@ -1,5 +1,9 @@
 function removeElement(nums: number[], val: number): number {
-  let j = 0;
-  for (let n of nums) if (n !== val) nums[j++] = n
-  return j
+  let idx = 0
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== val) nums[idx++] = nums[i]
+  }
+
+  return idx
 };
