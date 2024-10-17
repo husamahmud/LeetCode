@@ -5,7 +5,6 @@ function topKFrequent(nums: number[], k: number): number[] {
 
   for (const num of nums) freq[num] = (freq[num] || 0) + 1
 
-
   for (const [key, val] of Object.entries(freq)) {
     if (count[val]) count[val].push(+key)
     else count[val] = [+key]
