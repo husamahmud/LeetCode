@@ -1,6 +1,6 @@
 function topKFrequent(nums: number[], k: number): number[] {
   const freq: Record<number, number> = {}
-  const count: Record<number, number[]> = []
+  const count: number[][] = []
   const res: number[] = []
 
   for (const num of nums) freq[num] = (freq[num] || 0) + 1
@@ -11,8 +11,7 @@ function topKFrequent(nums: number[], k: number): number[] {
   }
 
   for (let i = nums.length; i > 0 && res.length < k; i--) {
-    if (count[i]) res.push(...count[i]);
-    if (res.length >= k) break;
+    if (count[i]) res.push(...count[i])
   }
 
   return res
