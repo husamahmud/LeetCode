@@ -2,10 +2,9 @@ type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string
 type Obj = Record<string, JSONValue> | Array<JSONValue>;
 
 function chunk(arr: Obj[], size: number): Obj[] {
-  let count: number = size
+  const res: Obj[][] = []
   let currChunk: Obj[] = []
   let i: number
-  const res: Obj[][] = []
 
   for (i = 0; i < arr.length; i++) {
     currChunk.push(arr[i])
