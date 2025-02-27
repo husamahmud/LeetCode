@@ -7,6 +7,4 @@ function twoSum(nums: number[], target: number): number[] {
     if (dif in map) return [map[dif], i]
     map[nums[i]] = i
   }
-
-  return [-1]
 };
