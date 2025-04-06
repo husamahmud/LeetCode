@@ -7,6 +7,5 @@ function twoSum(nums: number[], target: number): number[] {
     if (diff in m) return [i, m[diff]]
     m[nums[i]] = i
   }
-
   return [-1]
 };
