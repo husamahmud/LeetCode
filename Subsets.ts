@@ -9,8 +9,9 @@ function subsets(nums: number[]): number[][] {
 
     subset.push(nums[i])
     rec(i + 1, subset)
-
     subset.pop()
+
+    while (i + 1 < nums.length && nums[i] === nums[i + 1]) continue
     rec(i + 1, subset)
   }
 
