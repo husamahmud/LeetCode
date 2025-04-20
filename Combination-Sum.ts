@@ -1,21 +1,21 @@
 function combinationSum(candidates: number[], target: number): number[][] {
   const res: number[][] = []
 
-  const fn = (i: number, t: number, comb: number[]) => {
+  const rec = (i: number, t: number, ds: number[]): void => {
     if (i === candidates.length) {
-      if (t === 0) res.push([...comb])
+      if (t === 0) res.push([...ds])
       return
     }
 
     if (candidates[i] <= t) {
-      comb.push(candidates[i])
-      fn(i, t - candidates[i], comb)
-      comb.pop()
+      ds.push(candidates[i])
+      rec(i, t - candidates[i], ds)
+      ds.pop()
     }
 
-    fn(i + 1, t, comb)
+    rec(i + 1, t, ds)
   }
 
-  fn(0, target, [])
+  rec(0, target, [])
   return res
 };
