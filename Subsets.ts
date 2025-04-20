@@ -1,18 +1,17 @@
 function subsets(nums: number[]): number[][] {
   const res: number[][] = []
 
-  const rec = (i: number, subset: number[]): void => {
+  const rec = (i: number, ds: number[]): void => {
     if (i === nums.length) {
-      res.push([...subset])
+      res.push([...ds])
       return
     }
 
-    subset.push(nums[i])
-    rec(i + 1, subset)
-    subset.pop()
+    ds.push(nums[i])
+    rec(i + 1, ds)
 
-    while (i + 1 < nums.length && nums[i] === nums[i + 1]) continue
-    rec(i + 1, subset)
+    ds.pop()
+    rec(i + 1, ds)
   }
 
   rec(0, [])
