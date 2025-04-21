@@ -1,26 +1,25 @@
 function permute(nums: number[]): number[][] {
   const res: number[][] = []
-  const freq: boolean[] = []
 
-  const rec = (perm: number[], freq: boolean[]) => {
-    if (perm.length === nums.length) {
-      res.push([...perm])
+  const rec = (f: boolean[], ds: number[]): void => {
+    if (ds.length === nums.length) {
+      res.push([...ds])
       return
     }
 
     for (let i = 0; i < nums.length; i++) {
-      if (freq[i]) continue
+      if (f[i]) continue
 
-      freq[i] = true
-      perm.push(nums[i])
+      f[i] = true
+      ds.push(nums[i])
 
-      rec(perm, freq)
+      rec(f, ds)
 
-      perm.pop()
-      freq[i] = false
+      ds.pop()
+      f[i] = false
     }
   }
 
-  rec([], freq)
+  rec([], [])
   return res
 };
