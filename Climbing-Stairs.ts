@@ -1,9 +1,7 @@
 function climbStairs(n: number): number {
-  const noOfWays: number[] = new Array(n + 1).fill(1)
+  const dp: number[] = new Array(n + 1).fill(1)
 
-  for (let i = 2; i < n + 1; i++) {
-    noOfWays[i] = noOfWays[i - 1] + noOfWays[i - 2]
-  }
+  for (let i = 2; i < n + 1; i++) dp[i] = dp[i - 1] + dp[i - 2]
 
-  return noOfWays.at(-1)
+  return dp.at(-1)
 };
